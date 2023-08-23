@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Poppins:wght@500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  /* font-family: "Lobster Two", cursive; */
+  font-family: "Marcellus SC", serif;
+  color: orange;
+}
+#display {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#calculation {
+  height: 100vh;
+  padding: 0 30px;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+h1 {
+  text-align: center;
+  width: 100%;
+}
+#textarea {
+  font-family: "Marcellus SC", serif;
+  /* font-family: "Lobster Two", cursive; */
+  font-size: 23px;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.7;
+  border-radius: 16px;
+  border: 2px solid orange;
+  padding: 30px;
+  margin: 50px 0;
+  width: 300px;
+  color: orange;
+}
+button {
+  border: none;
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  border: 3px dashed orange;
+  border-radius: 50%;
+  font-size: 20px;
+  display: block;
+  font-weight: bold;
+  box-shadow: 1px 1px 15px rgba(255, 156, 0, 0.8);
+}
+h2 {
+  text-align: center;
+  width: 100%;
+  margin-top: 40px;
+}
+#result {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  margin-top: 30px;
+}
+#leftdiv {
+  text-align: left;
+}
+#rightdiv {
+  text-align: right;
+}
+.inner-div {
+  width: 100%;
+  font-size: 24px;
+  margin-bottom: 30px;
+  padding: 10px 0;
+  border: 2px solid gray;
+  display: flex;
+}
+.nam-p {
+  justify-content: space-around;
+  align-items: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-right: none;
+}
+.num-p {
+  justify-content: space-evenly;
+  align-items: center;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-left: none;
+}

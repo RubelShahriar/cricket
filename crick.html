@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="crick.css" />
+  </head>
+  <body>
+    <div class="crick">
+      <div id="display">
+        <div><h1 id="h1">Cricket</h1></div>
+        <div><textarea name="" id="textarea" rows="10"></textarea></div>
+        <div><button id="btn" onclick="getValue()">Tap</button></div>
+      </div>
+      <div id="calculation">
+        <div><h2 id="h2">Result</h2></div>
+        <div id="result">
+          <div id="leftdiv"></div>
+          <div id="rightdiv"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const display = document.getElementById("display");
+      const calculation = document.getElementById("calculation");
+      const textarea = document.getElementById("textarea");
+      const btn = document.getElementById("btn");
+      const h2 = document.getElementById("h2");
+      const result = document.getElementById("result");
+      const leftdiv = document.getElementById("leftdiv");
+      const rightdiv = document.getElementById("rightdiv");
+      const numArr = [];
+      const arr = [];
+
+      function getValue() {
+        display.style.display = "none";
+        calculation.style.display = "flex";
+
+        const str = textarea.value;
+        const arr = str.split("\n");
+        const tp = arr.length + 1;
+
+        for (let index = 1; index < tp; index++) {
+          numArr.push(index);
+        }
+        for (let i = numArr.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          let k = numArr[i];
+          numArr[i] = numArr[j];
+          numArr[j] = k;
+        }
+        arr.forEach((element) => {
+          const para = document.createElement("div");
+          para.classList.add("nam-p");
+          para.classList.add("inner-div");
+          para.innerText = `${element} - `;
+          leftdiv.appendChild(para);
+        });
+        function lngtype(text) {
+          var text = document.getElementById("textarea").value.replace(/\s/g); //read input value, and remove "space" by replace \s
+          //Dictionary for Unicode range of the languages
+          var langdic = {
+            arabic: /[\u0600-\u06FF]/,
+            persian: /[\u0750-\u077F]/,
+            Hebrew: /[\u0590-\u05FF]/,
+            Syriac: /[\u0700-\u074F]/,
+            Bengali: /[\u0980-\u09FF]/,
+            Ethiopic: /[\u1200-\u137F]/,
+            "Greek and Coptic": /[\u0370-\u03FF]/,
+            Georgian: /[\u10A0-\u10FF]/,
+            Thai: /[\u0E00-\u0E7F]/,
+            english: /^[a-zA-Z]+$/,
+            //add other languages her
+            //add other languages her
+          };
+          //const keys = Object.keys(langdic); //read  keys
+          //const keys = Object.values(langdic); //read  values
+          const keys = Object.entries(langdic); // read  keys and values from the dictionary
+          Object.entries(langdic).forEach(([key, value]) => {
+            // loop to read all the dictionary items if not true
+            if (value.test(text) == true) {
+              //Check Unicode to see which one is true
+              // return (document.getElementById("lang_her").innerHTML = key); //print language name if unicode true
+              if (key === "Bengali") {
+                let banglaNumber = {
+                  0: "০",
+                  1: "১",
+                  2: "২",
+                  3: "৩",
+                  4: "৪",
+                  5: "৫",
+                  6: "৬",
+                  7: "৭",
+                  8: "৮",
+                  9: "৯",
+                };
+
+                const engToBdNum = (str) => {
+                  for (var x in banglaNumber) {
+                    str = str.replace(new RegExp(x, "g"), banglaNumber[x]);
+                  }
+                  return str;
+                };
+                const stringArr = numArr.toString();
+                const gapArr = stringArr.replace(/,/g, " ");
+                const toBnNumArr = engToBdNum(gapArr);
+                const bnNumArr = toBnNumArr.split(" ");
+                const bnOren = true;
+                if (bnOren) {
+                  bnNumArr.forEach((element) => {
+                    const para = document.createElement("div");
+                    para.classList.add("num-p");
+                    para.classList.add("inner-div");
+                    para.innerText = `${element} `;
+                    rightdiv.appendChild(para);
+                  });
+                }
+              } else {
+                console.log("rubel");
+
+                numArr.forEach((element) => {
+                  const para = document.createElement("div");
+                  para.classList.add("num-p");
+                  para.classList.add("inner-div");
+                  para.innerText = `${element} `;
+                  rightdiv.appendChild(para);
+                });
+              }
+            }
+          });
+        }
+        lngtype();
+      }
+    </script>
+  </body>
+</html>
